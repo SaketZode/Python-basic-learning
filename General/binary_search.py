@@ -1,19 +1,10 @@
-# incorrect
-
-
-def get_centre(start, end, length):
-    if start > round(length/2):
-        return round((end-start)/2) + round((length/2)+1)
-    return round((end-start)/2)
-
-
-global_centre = 0
+def get_centre(start, end):
+    return round((end+start)/2)
 
 
 def binary_search(start_index, end_index, element, elements):
-    centre = get_centre(start_index, end_index, len(elements))
-    x = globals()['global_centre']
-    if x == centre:
+    centre = get_centre(start_index, end_index)
+    if start_index > end_index:
         return False, -1
     x = centre
     if elements[centre] == element:
@@ -30,7 +21,7 @@ lst = [13, 45, 87, 98, 23, 39, 40, 86, 90, 2, 8, 12, 52]
 lst.sort()
 print(lst)
 
-search = 85
+search = 48
 
 result, ind = binary_search(0, len(lst)-1, search, lst)
 if result:
