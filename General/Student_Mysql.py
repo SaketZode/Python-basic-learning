@@ -30,3 +30,23 @@ if database.is_connected():
     print(students)
     cursor.close()
     database.close()
+
+
+# INSERT operation
+
+"""
+commit() necessary for insert/update/delete operations
+"""
+
+database = mysql_connector.connect(host="127.0.0.1", user="root", password="root123", database="demo")
+
+if database.is_connected():
+    cursor = database.cursor()
+    query = "INSERT INTO student VALUES(%s, %s, %s)"
+    query_tuple = ("qwe", "Harvard", "qwe@gmail.com")
+    cursor.execute(query, query_tuple)
+    database.commit()
+    cursor.close()
+    database.close()
+
+
